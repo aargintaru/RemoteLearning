@@ -14,5 +14,17 @@ namespace VendingMachine
         {
             this.products = new List<Product>();
         }
+
+        public void AddProduct(Product p)
+        {
+            if (this.products.Any(prod => prod.Name == p.Name) == true)
+            {
+                var inList = this.products.FirstOrDefault(prod => prod.Name == p.Name);
+                if (inList != null)
+                {
+                    inList.Price = p.Price;
+                }
+            }
+        }
     }
 }
